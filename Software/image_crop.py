@@ -1,9 +1,12 @@
 import cv2
+import os
 import matplotlib.pyplot as plt
 import numpy as np
 import openvino as ov
 import ipywidgets as widgets
 from pathlib import Path
+
+import cv2
 
 
 ## 디바이스 선택
@@ -30,33 +33,31 @@ compiled_model = core.compile_model(model=model, device_name="CPU")
 
 input_layer_ir = compiled_model.input(0)
 output_layer_ir = compiled_model.output("boxes")
-print("컴파일모델 - input: ", input_layer_ir)
-print("컴파일모델 - output: ", output_layer_ir)
 
 
-## 이미지 로드
-image_filename = './images/sample.jpg'
-image = cv2.imread(str(image_filename))
-
-# 이미지 리사이징
+## Height, Width 지정
 H = 736
 W = 992
-resized_image = cv2.resize(image, (W, H))
-
-# Reshape to the network input shape.
-input_image = np.expand_dims(resized_image.transpose(2, 0, 1), 0)
-
-cv2.imshow('image', image)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
 
 
-# box 정보 얻어오기
-boxes = compiled_model([input_image])[output_layer_ir]
-boxes = boxes[0]
+## 이미지 저장
+def save_image(image):
+    
+    file_list=os.listdir('images/cropped_images')
+    #파일 갯수 세기
+    file_number = len(file_list)
+    print("현재 파일개수: ", file_number)
+    
+    cv2.imshow("Cropped Image", image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    cv2.imwrite(f'./images/cropped_images/cropped_test{file_number}.jpg', image)
+    
 
+## 라벨링된 이미지로 컨버팅
 def convert_result_to_image(bgr_image, resized_image, boxes, threshold=0.3, conf_labels=True):
     
+    #frame = bgr_image
     colors = {"red": (255, 0, 0), "green": (0, 255, 0)}
 
     (real_y, real_x), (resized_y, resized_x) = bgr_image.shape[:2], resized_image.shape[:2]
@@ -79,11 +80,8 @@ def convert_result_to_image(bgr_image, resized_image, boxes, threshold=0.3, conf
             rgb_image = cv2.rectangle(rgb_image, (x_min, y_min), (x_max, y_max), colors["green"], 3)
             
             # crop & save
-            crop_image = image[y_min:y_max, x_min:x_max]
-            cv2.imshow("Cropped Image", crop_image)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
-            cv2.imwrite('./images/cropped_images/cropped_test.jpg', crop_image)
+            crop_image = bgr_image[y_min:y_max, x_min:x_max]
+            save_image(crop_image)
             
             # Add text to the image based on position and confidence.
             # Parameters in text function are: image, text, bottom-left_corner_textfield, font, font_scale, color, thickness, line_type.
@@ -102,10 +100,37 @@ def convert_result_to_image(bgr_image, resized_image, boxes, threshold=0.3, conf
     return rgb_image
 
 
-#plt.figure(figsize=(10, 6))
-#plt.axis("off")
-#plt.imshow(convert_result_to_image(image, resized_image, boxes, conf_labels=False))
+## 웹캠 사용
+cap= cv2.VideoCapture(0)
+if cap.isOpened():
+    
+    while True:
+        ret,frame = cap.read()
+        
+        if ret:
+            cv2.imshow('camera', frame)
 
-cv2.imshow('image Convert', convert_result_to_image(image, resized_image, boxes, conf_labels=False))
-cv2.waitKey(0)
+            if cv2.waitKey(1) != -1:
+                #cv2.imwrite('photo.jpg', frame)
+                
+                resized_image = cv2.resize(frame, (W, H))
+
+                # Reshape to the network input shape.
+                input_image = np.expand_dims(resized_image.transpose(2, 0, 1), 0)
+
+                # box 정보 얻어오기
+                boxes = compiled_model([input_image])[output_layer_ir]
+                boxes = boxes[0]
+                
+                cv2.imshow('image Convert', convert_result_to_image(frame, resized_image, boxes, conf_labels=False))
+                cv2.waitKey(0)
+                cv2.destroyAllWindows()
+                break
+            
+        else:
+            print('no frame')
+            break
+else:
+    print('no camera!')
+cap.release()
 cv2.destroyAllWindows()

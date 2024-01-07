@@ -1,4 +1,8 @@
-# 모델
+# model
 *.xml
 *.bin
 
+# image
+*.jpg
+*.png
+*.jpeg
