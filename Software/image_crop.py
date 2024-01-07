@@ -17,7 +17,7 @@ device = widgets.Dropdown(
 
 
 ## 모델 로드
-base_model_dir = Path("./braille_model").expanduser()
+base_model_dir = Path("./model").expanduser()
 
 model_xml_name = 'model.xml'
 model_bin_name = 'model.bin'
@@ -78,11 +78,12 @@ def convert_result_to_image(bgr_image, resized_image, boxes, threshold=0.3, conf
             # Draw a box, rectangle function: image, start_point, end_point, color, thickness
             rgb_image = cv2.rectangle(rgb_image, (x_min, y_min), (x_max, y_max), colors["green"], 3)
             
-            # 자르기
+            # crop & save
             crop_image = image[y_min:y_max, x_min:x_max]
             cv2.imshow("Cropped Image", crop_image)
             cv2.waitKey(0)
             cv2.destroyAllWindows()
+            cv2.imwrite('./images/cropped_images/cropped_test.jpg', crop_image)
             
             # Add text to the image based on position and confidence.
             # Parameters in text function are: image, text, bottom-left_corner_textfield, font, font_scale, color, thickness, line_type.
