@@ -85,17 +85,17 @@ def convert_result_to_image(bgr_image, resized_image, boxes, threshold=0.3, conf
             
             # Add text to the image based on position and confidence.
             # Parameters in text function are: image, text, bottom-left_corner_textfield, font, font_scale, color, thickness, line_type.
-            if conf_labels:
-                rgb_image = cv2.putText(
-                    rgb_image,
-                    f"{conf:.2f}",
-                    (x_min, y_min - 10),
-                    cv2.FONT_HERSHEY_SIMPLEX,
-                    0.8,
-                    colors["red"],
-                    1,
-                    cv2.LINE_AA,
-                )
+            #if conf_labels:
+            rgb_image = cv2.putText(
+                rgb_image,
+                f"dot: {conf:.2f}",
+                (x_min, y_min - 10),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.8,
+                colors["red"],
+                1,
+                cv2.LINE_AA,
+            )
 
     return rgb_image
 
@@ -121,7 +121,7 @@ if cap.isOpened():
                 # box 정보 얻어오기
                 boxes = compiled_model([input_image])[output_layer_ir]
                 boxes = boxes[0]
-                
+                print(21321)
                 cv2.imshow('image Convert', convert_result_to_image(frame, resized_image, boxes, conf_labels=False))
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
