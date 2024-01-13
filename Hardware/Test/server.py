@@ -2,9 +2,8 @@ from socket import *
 from os.path import exists
 import sys
 
-
 serverSock = socket(AF_INET, SOCK_STREAM)
-serverSock.bind(('', 8018))
+serverSock.bind(('', 8020))
 serverSock.listen(1)
 
 connectionSock, addr = serverSock.accept()
