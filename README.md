@@ -4,15 +4,10 @@
 * 목표: 시각장애인용 점자 탐색 지팡이를 만드는 것
 
 ## High Level Design
-
-* (프로젝트 아키텍쳐 기술, 전반적인 diagram 으로 설명을 권장)
-
-### HLD
 ![HLD drawio (1)](https://github.com/myreporthjh/SoB/assets/148738904/8a055947-9bc2-4fed-98d7-97845b96a3a2)
 
-### USE CASE
+## USE CASE
 ![use_case drawio](https://github.com/myreporthjh/SoB/assets/148738904/1c066193-9c47-4f00-b9b4-e904a14dce17)
-
 
 ## Clone code
 
