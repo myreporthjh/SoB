@@ -27,18 +27,6 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Steps to build
-
-* (프로젝트를 실행을 위해 빌드 절차 기술)
-
-```shell
-cd ~/xxxx
-source .venv/bin/activate
-
-make
-make install
-```
-
 ## Steps to run
 
 * (프로젝트 실행방법에 대해서 기술, 특별한 사용방법이 있다면 같이 기술)
