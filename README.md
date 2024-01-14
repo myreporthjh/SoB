@@ -7,6 +7,13 @@
 
 * (프로젝트 아키텍쳐 기술, 전반적인 diagram 으로 설명을 권장)
 
+### HLD
+![HLD drawio (1)](https://github.com/myreporthjh/SoB/assets/148738904/8a055947-9bc2-4fed-98d7-97845b96a3a2)
+
+### USE CASE
+![use_case drawio](https://github.com/myreporthjh/SoB/assets/148738904/1c066193-9c47-4f00-b9b4-e904a14dce17)
+
+
 ## Clone code
 
 * (각 팀에서 프로젝트를 위해 생성한 repository에 대한 code clone 방법에 대해서 기술)
