@@ -4,7 +4,7 @@ import hanguldata
 ######파일 형식을 aegukga2.txt처럼 해둘 것
 ######줄 하나당 바이너리 코드 6글자씩
 def get_bin_data():
-    file_path = "aegukga2.txt"
+    file_path = "word.txt"
     with open(file_path) as f:
         lines = f.read().splitlines()
         if not lines:
@@ -98,7 +98,7 @@ def combine(sentence):
     return result     
 
 #메인 함수 ****result안의 문장만 꺼내오면 됨****  @@@@@@@@@@@@@@@@@@@@@@@@@@@@              
-def main():
+def convert():
     binary_data = get_bin_data()
     sentence = binary_to_sentence(binary_data)
     print(sentence)
@@ -107,6 +107,3 @@ def main():
     ###result.txt 파일에 저장한다
     with open('result.txt','w') as file:
         file.write(result)
-    
-if __name__ == "__main__":
-    main()
