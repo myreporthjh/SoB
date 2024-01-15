@@ -47,7 +47,7 @@ def send_img2server():
     with open(img_filename, 'rb') as img_f:
         try:
             img_data = img_f.read(1024) #1024바이트 읽는다
-            while img_data: #데이터가 없을 때까지
+            while img_data:             #데이터가 없을 때까지
                 img_data_transferred += clientSock.send(img_data) #1024바이트 보내고 크기 저장
                 img_data = img_f.read(1024) #1024바이트 읽음
         except Exception as img_ex:
@@ -82,14 +82,12 @@ def execute_send_thread():
     send_img = send_img2server()
     send_thread = threading.Thread(target=send_img, daemon=True)
     send_thread.start()
-    time.sleep(3)
     send_thread.join()
 
 def execute_recv_thread():
     recv_txt = recv_txt4server()
     recv_thread = threading.Thread(target=recv_txt, daemon=True)
     recv_thread.start()
-    time.sleep(3)
     recv_thread.join()
 
 def main():
