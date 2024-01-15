@@ -28,14 +28,15 @@ pip install -r requirements.txt
 
 ## Steps to run
 
-소켓 통신 사용시 Hardware의 main.py사용
-
 ```shell
 source .venv/bin/activate
 
-cd Software
+cd Software/
 python main.py
-```
+
+# 소켓 통신 사용시 Hardware 부분도 같이 실행
+cd Hardware/
+python main.py
 
 ## Output
 
