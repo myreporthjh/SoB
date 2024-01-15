@@ -78,6 +78,8 @@ def combine(sentence):
         i+=1
         if ch != ' ' and ch != ',':
             aaa.append(ch)
+            if len(aaa)==2 and aaa[1] not in hanguldata.hangul_jung:
+                aaa=aaa[:1]
             if ch in '1234567890':
                 result += ch
                 aaa=[]
