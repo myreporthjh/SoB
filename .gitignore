@@ -5,7 +5,6 @@ config.json
 
 # image
 *.jpg
-*.png
 *.jpeg
 
 # cache
