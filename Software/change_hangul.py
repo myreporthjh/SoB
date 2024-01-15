@@ -99,7 +99,8 @@ def combine(sentence):
 
 #메인 함수 ****result안의 문장만 꺼내오면 됨****  @@@@@@@@@@@@@@@@@@@@@@@@@@@@              
 def convert():
-    binary_data = get_bin_data()
+    temp_binary_data = get_bin_data()
+    binary_data = list(filter(lambda x: x in hanguldata.koreanBrailleMap, temp_binary_data))
     sentence = binary_to_sentence(binary_data)
     print(sentence)
     result = combine(sentence)
