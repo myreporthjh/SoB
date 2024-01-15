@@ -1,6 +1,7 @@
 # model
 *.xml
 *.bin
+config.json
 
 # image
 *.jpg
