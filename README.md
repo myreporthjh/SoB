@@ -1,5 +1,5 @@
 # 점자의 소리
-
+[발표](https://docs.google.com/presentation/d/1WSleXYFF2FmuSL_zByKoB1HBIoQ587_Zn22ENmkoQBQ/edit?usp=sharing)
 * 점자를 인식하고 문장으로 만들어서 소리로 출력하는 프로젝트
 * 목표: 시각장애인용 점자 탐색 지팡이를 만드는 것
 
