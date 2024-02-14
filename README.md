@@ -40,7 +40,17 @@ python main.py
 ```
 
 ## Output
-* (프로젝트 실행 화면 캡쳐)
+* Model1 (문장 단위 인식)
+  
+  ![image](https://github.com/myreporthjh/SoB/assets/148738904/391502b5-9ae0-4190-8759-55ead0889873)
+
+* Model2 (점자 요소 세부인식)
+  
+  ![image](https://github.com/myreporthjh/SoB/assets/148738904/b521e63c-c238-4b6d-9254-59c4871171ff)
+
+* 글자조합
+  
+  ![image](https://github.com/myreporthjh/SoB/assets/148738904/d5eded26-05e8-47cd-b519-004dd2c8cc9c)
 
 
 ## Appendix
