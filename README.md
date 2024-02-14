@@ -37,7 +37,7 @@ python main.py
 ```
 
 ## Output
-* 촬영
+* 촬영 (라즈베리파이 + 웹캠)
   
   ![image](https://github.com/myreporthjh/SoB/assets/148738904/c22391ea-6a5c-4a52-9fc0-625cb4babc27)
 
