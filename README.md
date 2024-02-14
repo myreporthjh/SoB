@@ -40,17 +40,21 @@ python main.py
 ```
 
 ## Output
+* 촬영
+  
+  ![image](https://github.com/myreporthjh/SoB/assets/148738904/c22391ea-6a5c-4a52-9fc0-625cb4babc27)
+
 * Model1 (문장 단위 인식)
   
-  ![image](https://github.com/myreporthjh/SoB/assets/148738904/391502b5-9ae0-4190-8759-55ead0889873)
+  ![image](https://github.com/myreporthjh/SoB/assets/148738904/611d2c7d-24c1-44a1-b81d-aa5a4949b6c6)
 
 * Model2 (점자 요소 세부인식)
-  
-  ![image](https://github.com/myreporthjh/SoB/assets/148738904/b521e63c-c238-4b6d-9254-59c4871171ff)
+
+  ![image](https://github.com/myreporthjh/SoB/assets/148738904/b173b04c-505b-4390-98d7-a47f901b8437)
 
 * 글자조합
-  
-  ![image](https://github.com/myreporthjh/SoB/assets/148738904/d5eded26-05e8-47cd-b519-004dd2c8cc9c)
+
+  ![image](https://github.com/myreporthjh/SoB/assets/148738904/f075f2f6-1ae9-4766-a0a7-dc408362919b)
 
 
 ## Appendix
